@@ -9,5 +9,5 @@ RUN /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh; sdk version; sdk inst
 WORKDIR /app
 COPY . ./
 RUN pip3 install -r requirements.txt
-RUN clean compile package
+RUN mvn clean compile package
 CMD java -jar ./target/SinglePageFullHtml-1.0-SNAPSHOT-jar-with-dependencies.jar https://www.example.com/
