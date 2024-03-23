@@ -7,23 +7,21 @@ import sys
 import time
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 
-
-# sudo apt install python3-pip
-# sudo apt-get install python3-tk python3-dev
-# pip3 install pyautogui
-# pip3 install selenium
-# sudo cp /home/bgu/Packages/geckodriver-v0.27.0-linux64/geckodriver /usr/bin/
 
 def OpenPageThenSave(page_url, save_to_file):
-    cap = DesiredCapabilities().FIREFOX
+    cap = DesiredCapabilities().CHROME
     cap["marionette"] = True
+    option = Options()
+    option.binary_location = "/opt/google/chrome/chrome"    #chrome binary location specified here
+    option.add_argument("--no-sandbox") #bypass OS security model
+    option.add_argument("--headless")
 
-    options = Options()
-    options.headless = False
+    browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), capabilities=cap, options=option)
 
-    browser = webdriver.Firefox(capabilities=cap, options=options)
     browser.set_page_load_timeout(30)  # seconds
 
     try:
