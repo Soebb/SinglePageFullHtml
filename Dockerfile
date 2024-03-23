@@ -24,7 +24,7 @@ RUN apt-get update && \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 
 # Install maven
-ARG MAVEN_VERSION=3.6.3
+ARG MAVEN_VERSION=3.8.8
 ARG USER_HOME_DIR="/root"
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
