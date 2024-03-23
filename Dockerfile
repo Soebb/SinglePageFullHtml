@@ -4,7 +4,7 @@ RUN apt-get update && apt-get -y install \
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 RUN curl -s 'https://get.sdkman.io' | bash
-RUN /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh; sdk version; sdk install java 8.0.302-open; sdk install maven 3.6.3"
+RUN /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh; sdk version; sdk install java 8.0.241-open; sdk install maven 3.6.3"
 WORKDIR /app
 COPY . ./
 RUN pip3 install -r requirements.txt
